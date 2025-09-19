@@ -8,6 +8,6 @@ namespace Route.BLL.Services
         bool DeleteDepartment(int id);
         IEnumerable<DepartmentDTO> GetAllDepartments();
         DepartmentDetailsDTO? GetDepartmentById(int id);
-        int UpdateDepartment(DepartmentUpdateDTO deptDTO);
+        int UpdateDepartment(int id, DepartmentUpdateDTO deptDTO);
     }
 }

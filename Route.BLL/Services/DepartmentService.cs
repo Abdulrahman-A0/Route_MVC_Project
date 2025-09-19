@@ -30,9 +30,12 @@ namespace Route.BLL.Services
             return departmentRepository.Add(deptDTO.ToEntity());
         }
 
-        public int UpdateDepartment(DepartmentUpdateDTO deptDTO)
+        public int UpdateDepartment(int id, DepartmentUpdateDTO deptDTO)
         {
-            return departmentRepository.Update(deptDTO.ToEntity());
+            var departmentFromDB = departmentRepository.GetById(id);
+            deptDTO.ToEntity(departmentFromDB);
+
+            return departmentRepository.Update(departmentFromDB);
         }
 
         public bool DeleteDepartment(int id)

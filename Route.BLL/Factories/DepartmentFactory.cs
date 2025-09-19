@@ -31,7 +31,7 @@ namespace Route.BLL.Factories
                 Code = department.Code,
                 Description = department.Description,
                 CreatedBy = department.CreatedBy,
-                CreatedOn = department.CreatedOn,
+                DateOfCreation = department.CreatedOn,
                 LastModificationBy = department.LastModificationBy,
                 LastModificationOn = department.LastModificationOn,
                 IsDeleted = department.IsDeleted
@@ -45,18 +45,15 @@ namespace Route.BLL.Factories
                 Name = deptDTO.Name,
                 Code = deptDTO.Code,
                 Description = deptDTO.Description,
-                CreatedOn = deptDTO.CreatedOn,
+                CreatedOn = deptDTO.DateOfCreation,
             };
         }
-        public static Department ToEntity(this DepartmentUpdateDTO deptDTO)
+        public static void ToEntity(this DepartmentUpdateDTO deptDTO, Department oldDepartment)
         {
-            return new Department
-            {
-                Name = deptDTO.Name,
-                Code = deptDTO.Code,
-                Description = deptDTO.Description,
-                CreatedOn = deptDTO.CreatedOn,
-            };
+            oldDepartment.Name = deptDTO.Name;
+            oldDepartment.Code = deptDTO.Code;
+            oldDepartment.Description = deptDTO.Description;
+            oldDepartment.CreatedOn = deptDTO.DateOfCreation;
         }
 
     }

@@ -1,8 +1,7 @@
-﻿namespace Route.BLL.DTOs
+﻿namespace Route.PL.ViewModels.DepartmentViewModels
 {
-    public class DepartmentUpdateDTO
+    public class DepartmentEditViewModel
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
         public string? Description { get; set; }

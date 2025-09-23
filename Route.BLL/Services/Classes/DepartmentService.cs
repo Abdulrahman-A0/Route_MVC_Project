@@ -1,13 +1,14 @@
-﻿using Route.BLL.DTOs;
+﻿using Route.BLL.DTOs.Department;
 using Route.BLL.Factories;
-using Route.DAL.Repositories;
+using Route.BLL.Services.Interfaces;
+using Route.DAL.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Route.BLL.Services
+namespace Route.BLL.Services.Classes
 {
     public class DepartmentService(IDepartmentRepository departmentRepository) : IDepartmentService
     {

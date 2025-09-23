@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Route.BLL.DTOs
+namespace Route.BLL.DTOs.Department
 {
     public class DepartmentDetailsDTO
     {

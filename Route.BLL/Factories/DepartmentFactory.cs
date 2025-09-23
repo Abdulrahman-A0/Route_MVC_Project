@@ -1,5 +1,5 @@
-﻿using Route.BLL.DTOs;
-using Route.DAL.Models;
+﻿using Route.BLL.DTOs.Department;
+using Route.DAL.Models.DepartmentModule;
 using System;
 using System.Collections.Generic;
 using System.Linq;

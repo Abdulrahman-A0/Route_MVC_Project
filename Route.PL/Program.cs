@@ -1,7 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using Route.BLL.Services;
+using Route.BLL.Mapping;
+using Route.BLL.Services.Classes;
+using Route.BLL.Services.Interfaces;
 using Route.DAL.Data.Contexts;
-using Route.DAL.Repositories;
+using Route.DAL.Repositories.Classes;
+using Route.DAL.Repositories.Interfaces;
 
 namespace Route.PL
 {
@@ -22,6 +25,11 @@ namespace Route.PL
 
             builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+
+            builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+
+            builder.Services.AddAutoMapper(e => e.AddProfile<MappingProfile>());
             #endregion
 
             var app = builder.Build();

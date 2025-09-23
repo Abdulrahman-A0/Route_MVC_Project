@@ -1,4 +1,4 @@
-﻿namespace Route.BLL.DTOs
+﻿namespace Route.BLL.DTOs.Department
 {
     public class DepartmentUpdateDTO
     {

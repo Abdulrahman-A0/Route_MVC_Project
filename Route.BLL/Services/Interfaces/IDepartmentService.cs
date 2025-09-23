@@ -1,6 +1,6 @@
-﻿using Route.BLL.DTOs;
+﻿using Route.BLL.DTOs.Department;
 
-namespace Route.BLL.Services
+namespace Route.BLL.Services.Interfaces
 {
     public interface IDepartmentService
     {

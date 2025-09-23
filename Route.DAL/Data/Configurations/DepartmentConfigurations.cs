@@ -1,6 +1,8 @@
-﻿namespace Route.DAL.Data.Configurations
+﻿using Route.DAL.Models.DepartmentModule;
+
+namespace Route.DAL.Data.Configurations
 {
-    public class DepartmentConfigurations : IEntityTypeConfiguration<Department>
+    public class DepartmentConfigurations : BaseEntityConfigurations<Department>, IEntityTypeConfiguration<Department>
     {
         public void Configure(EntityTypeBuilder<Department> builder)
         {
@@ -13,12 +15,7 @@
             builder.Property(D => D.Code)
                 .HasColumnType("varchar(20)");
 
-            builder.Property(D => D.CreatedOn)
-                .HasDefaultValueSql("GETDATE()");
-
-            builder.Property(D => D.LastModificationOn)
-                .HasComputedColumnSql("GETDATE()");
-
+            base.Configure(builder);
         }
     }
 }

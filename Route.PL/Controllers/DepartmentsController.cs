@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Route.BLL.DTOs;
-using Route.BLL.Services;
+using Route.BLL.DTOs.Department;
+using Route.BLL.Services.Interfaces;
 using Route.PL.ViewModels.DepartmentViewModels;
 
 namespace Route.PL.Controllers

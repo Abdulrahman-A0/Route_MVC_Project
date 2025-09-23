@@ -1,4 +1,4 @@
-﻿namespace Route.DAL.Models
+﻿namespace Route.DAL.Models.Shared
 {
     public class BaseEntity
     {

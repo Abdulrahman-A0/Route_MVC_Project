@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Route.BLL.DTOs;
 using Route.BLL.DTOs.Department;
@@ -7,11 +8,12 @@ using Route.PL.ViewModels.DepartmentViewModels;
 
 namespace Route.PL.Controllers
 {
-    public class DepartmentsController(IDepartmentService _departmentService, ILogger<DepartmentsController> _logger, IWebHostEnvironment _environment) : Controller
+    public class DepartmentsController(IDepartmentService _departmentService, ILogger<DepartmentsController> _logger, IWebHostEnvironment _environment, IMapper _mapper) : Controller
     {
         private readonly IDepartmentService departmentService = _departmentService;
         private readonly ILogger<DepartmentsController> logger = _logger;
         private readonly IWebHostEnvironment environment = _environment;
+        private readonly IMapper mapper = _mapper;
 
         #region Index
         [HttpGet]
@@ -29,13 +31,13 @@ namespace Route.PL.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(DepartmentCreationDTO departmentDTO)
+        public IActionResult Create(DepartmentViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    int result = departmentService.AddDepartment(departmentDTO);
+                    int result = departmentService.AddDepartment(mapper.Map<DepartmentCreationDTO>(viewModel));
                     if (result > 0)
                     {
                         return RedirectToAction(nameof(Index));
@@ -56,7 +58,7 @@ namespace Route.PL.Controllers
 
                 }
             }
-            return View(departmentDTO);
+            return View(viewModel);
         }
         #endregion
         #region Details
@@ -78,31 +80,20 @@ namespace Route.PL.Controllers
             if (department is null)
                 return NotFound();
 
-            var departmentViewModel = new DepartmentEditViewModel()
-            {
-                Code = department.Code,
-                Name = department.Name,
-                Description = department.Description,
-                DateOfCreation = department.DateOfCreation,
-            };
+            var departmentViewModel = mapper.Map<DepartmentViewModel>(department);
+
             return View(departmentViewModel);
         }
 
         [HttpPost]
-        public IActionResult Edit([FromRoute] int id, DepartmentEditViewModel viewModel)
+        public IActionResult Edit([FromRoute] int id, DepartmentViewModel viewModel)
         {
             if (!ModelState.IsValid)
                 return View(viewModel);
 
             try
             {
-                var updatedDepartmentDTO = new DepartmentUpdateDTO()
-                {
-                    Code = viewModel.Code,
-                    Name = viewModel.Name,
-                    Description = viewModel.Description,
-                    DateOfCreation = viewModel.DateOfCreation,
-                };
+                var updatedDepartmentDTO = mapper.Map<DepartmentUpdateDTO>(viewModel);
 
                 int result = departmentService.UpdateDepartment(id, updatedDepartmentDTO);
                 if (result > 0)

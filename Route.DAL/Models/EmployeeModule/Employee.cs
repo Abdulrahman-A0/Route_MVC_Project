@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Route.DAL.Models.DepartmentModule;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,5 +19,8 @@ namespace Route.DAL.Models.EmployeeModule
         public DateTime? HiringDate { get; set; }
         public Gender Gender { get; set; }
         public EmployeeTypes EmployeeType { get; set; }
+
+        public int? DepartmentId { get; set; }
+        public Department? Department { get; set; }
     }
 }

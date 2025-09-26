@@ -1,4 +1,5 @@
-﻿using Route.DAL.Models.Shared;
+﻿using Route.DAL.Models.EmployeeModule;
+using Route.DAL.Models.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,6 @@ namespace Route.DAL.Models.DepartmentModule
         public string Code { get; set; }
         public string? Description { get; set; }
 
+        public ICollection<Employee> Employees = new HashSet<Employee>();
     }
 }
